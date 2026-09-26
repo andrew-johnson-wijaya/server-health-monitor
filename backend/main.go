@@ -5,6 +5,7 @@ import (
     "log"
     "math/rand"
     "net/http"
+	"os"
 )
 
 type ServerMetrics struct {
@@ -30,6 +31,11 @@ func metricsHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
     http.HandleFunc("/api/metrics", metricsHandler)
+
+	port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080"
+    }
     
     log.Println("Go Backend running on http://localhost:8080...")
     log.Fatal(http.ListenAndServe(":8080", nil))
