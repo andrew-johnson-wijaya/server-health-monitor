@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const fetchMetrics = async () => {
       try {
-        const res = await fetch('http://localhost:8080/api/metrics');
+        const res = await fetch('https://server-health-monitor-one.vercel.app/api/metrics');
         const data = await res.json();
         setMetrics(data);
       } catch (error) {
